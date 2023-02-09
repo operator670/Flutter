@@ -1,0 +1,291 @@
+import 'dart:math';
+// import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+
+//------------------------------------------------------------------------------------
+//------------------------------QUIZ APP----------------------------------------------
+// void main()=> runApp(
+//   MaterialApp(
+//     home: Scaffold(
+//    appBar: AppBar( title: Text("Quiz App")),
+//    body: QuizApp()
+//     )
+//   )
+// );
+//
+// class Question{
+//   final String questionText;
+//   final bool answer;
+//   Question({required this.questionText,required this.answer});
+// }
+//
+// class Questions{
+//   List<Question> qBank = [
+//     Question(questionText: "oxygen is solid ?", answer: false),
+//     Question(questionText: "The capital of Australia is Sydney ?", answer: true),
+//     Question(questionText: "Bill Gates is the founder of microsoft?", answer: true)
+//   ];
+// }
+//
+// class QuizApp extends StatefulWidget {
+//   const QuizApp({Key? key}) : super(key: key);
+//
+//   @override
+//   State<QuizApp> createState() => _QuizAppState();
+// }
+//
+// class _QuizAppState extends State<QuizApp> {
+//
+//   int questionNumber = 0;
+//   int currentScore = 0;
+//
+//   Questions questions = Questions();
+//
+//   void updateQuestionState(){
+//     setState(() {
+//       questionNumber = questionNumber+1;
+//     });
+//   }
+//
+//   void updateCurrentScore(bool choice,int questionNumber){
+//
+//     if(questions.qBank.length == questionNumber)
+//       {
+//         print("End of question !");
+//       }else
+//         {
+//     if(choice == questions.qBank[questionNumber].answer)
+//       {
+//         setState(() {
+//           currentScore = currentScore+1;
+//         });
+//       }
+//         }
+//   }
+//
+//   bool checkValidQuestion(int questionNumber)
+//   {
+//     return questionNumber < questions.qBank.length?true:false;
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       child: Column(
+//         children: [
+//           Center(child: Text( checkValidQuestion(questionNumber)?questions.qBank[questionNumber].questionText:"end!")),
+//           SizedBox(width: 20.0,),
+//           if(checkValidQuestion(questionNumber))
+//             ElevatedButton(onPressed: (() {
+//               setState(() {
+//                 if(questions.qBank.length == questionNumber)
+//                   {
+//                     print("End !");
+//                   }
+//                 else {
+//                   updateCurrentScore(true, questionNumber);
+//                   updateQuestionState();
+//                   }
+//               });
+//             }), child: Text("True")),
+//           SizedBox(width: 20.0),
+//           if(checkValidQuestion(questionNumber))
+//             ElevatedButton(onPressed: (() {
+//               setState(() {
+//                 if(questions.qBank.length == questionNumber)
+//                   {
+//                     print("End!");
+//                   }
+//                 else
+//                   {
+//                     updateCurrentScore(false, questionNumber);
+//                     updateQuestionState();
+//                   }
+//
+//               });
+//             }), child: Text("False")),
+//           SizedBox(width:20.0),
+//           Center(child: Text("Current Score"),),
+//           SizedBox(width: 20.0,),
+//           Center(child: Text("$currentScore"),)
+//         ],
+//       ),
+//     );
+//   }
+// }
+//----------------------------------------------------------------------------------
+//--------------------------DICE APP------------------------------------------------
+// void main() => runApp(
+//   MaterialApp(
+//     home: Scaffold(
+//       appBar: AppBar(title: Text("Dicee App")),
+//       body: DiceApp(),
+//     ),
+//   )
+// );
+//
+// class DiceApp extends StatefulWidget {file:/C:/Users/Psydeer/AndroidStudioProjects/bone/lib/
+//   const DiceApp({Key? key}) : super(key: key);
+//
+//   @override
+//   State<DiceApp> createState() => _DiceAppState();
+// }
+//
+// class _DiceAppState extends State<DiceApp> {
+//
+//   int left = 1;
+//   int right = 2;
+//
+//   void updateNumber()
+//   {
+//     setState(() {
+//       left = Random().nextInt(6)+1;
+//       right = Random().nextInt(6)+1;
+//     });
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center( child: Container(
+//       child: Row(
+//         children: [
+//           Expanded(flex: 1,
+//             child: TextButton(
+//               style: TextButton.styleFrom(backgroundColor: Colors.blueAccent),
+//               child: Image.asset('images/dice$left.png'),
+//               onPressed: (() {
+//                 updateNumber();
+//               }),
+//
+//             ),),
+//           Expanded(flex: 1,child: TextButton(
+//             style: TextButton.styleFrom(backgroundColor: Colors.blueAccent),
+//             child: Image.asset('images/dice$right.png'),
+//             onPressed: (() {
+//               updateNumber();
+//             }),
+//           ))
+//         ],
+//       ),
+//     ),);
+//   }
+// }
+//-------------------------------------------------------------------------------------
+//--------------------------XYLO APP---------------------------------------------------
+// void main()=> runApp(MaterialApp(
+//   home: Scaffold(
+//     appBar: AppBar(title: Text("XyloApp"),),
+//     body: XyloPage(),
+//   ),
+// ));
+
+// class XyloPage extends StatefulWidget {
+//   const XyloPage({Key? key}) : super(key: key);
+//
+//   @override
+//   State<XyloPage> createState() => _XyloPageState();
+// }
+//
+// class _XyloPageState extends State<XyloPage> {
+//
+//     void playSound(int number){
+//       final player = AudioCache();
+//       player.play('assets_note$number.wav');
+//     }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.stretch,
+//         children: [
+//           Expanded(flex: 1,child: TextButton(child: Text("1"),
+//             style: TextButton.styleFrom(backgroundColor: Colors.redAccent),
+//             onPressed: (() {
+//               playSound(1);
+//             }),
+//           )),
+//           Expanded(flex: 1,child: TextButton(child: Text("2"),
+//             style: TextButton.styleFrom(backgroundColor: Colors.blueAccent),
+//             onPressed: (() {
+//               playSound(2);
+//             }),
+//           )),
+//           Expanded(flex: 1,child: TextButton(child: Text("3"),
+//             style: TextButton.styleFrom(backgroundColor: Colors.yellowAccent),
+//             onPressed: (() {
+//               playSound(3);
+//             }),
+//           )),
+//           Expanded(flex: 1,child: TextButton(child: Text("4"),
+//             style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
+//             onPressed: (() {
+//               playSound(4);
+//             }),
+//           )),
+//           Expanded(flex: 1,child: TextButton(child: Text("5"),
+//             style: TextButton.styleFrom(backgroundColor: Colors.purpleAccent),
+//             onPressed: (() {
+//               playSound(5);
+//             }),
+//           )),
+//         ],
+//       ),
+//     );
+//   }
+// }
+//---------------------------------------------------------------------------------------------
+//------------------------------1-----------------------------------------------------------
+void main()=> runApp(MaterialApp(
+  home: Scaffold(
+    appBar: AppBar(title: Text("firstApp"),),
+    body: FirstApp(),
+  ),
+));
+
+class FirstApp extends StatelessWidget {
+  const FirstApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+            Container(
+              height: 100,
+              width: 100,
+              color: Colors.blueAccent,
+              child: Center(child: Text("1"),),
+            )
+        ],),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+            Container(
+              height: 100,
+              width: 100,
+              color: Colors.deepOrangeAccent,
+              child: Center(child: Text("2"),),
+            )
+          ],),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+            Container(
+              height: 100,
+              width: 100,
+              color: Colors.brown,
+              child: Center(child: Text("3"),),
+            )
+          ],)
+        ],
+      ),
+    );
+  }
+}
